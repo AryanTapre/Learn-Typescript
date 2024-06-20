@@ -1,0 +1,37 @@
+/**
+ *  @abstract classes are not instantiated
+ *  @abstract classes are generally the base class
+ *  @abstract classes will only have abstract fields and methods
+ * 
+ */
+
+abstract class Animal {
+    abstract walk() : void;
+    abstract eat() : void;
+}
+
+class Bird extends Animal {
+     constructor() {
+        super();
+    }
+
+    eat(): void {
+        console.log("bird is eating..");
+    }
+
+    walk(): void {  
+        console.log("bird is walking");    
+    }
+}
+
+
+class BirdFactory {
+    static createBird() : Bird {
+        return new Bird();
+    }
+}
+
+
+const bird1 = BirdFactory.createBird();
+bird1.eat();
+bird1.walk();

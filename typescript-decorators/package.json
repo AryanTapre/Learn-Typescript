@@ -1,0 +1,19 @@
+{
+  "name": "typescript-decorators",
+  "version": "1.0.0",
+  "description": "Learning typescript decorators",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "keywords": [
+    "typescript",
+    "decorators"
+  ],
+  "author": "AryanTapre",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.28",
+    "typescript": "^5.4.2"
+  }
+}

@@ -1,0 +1,4 @@
+https://blog.logrocket.com/practical-guide-typescript-decorators/
+
+
+https://youtu.be/1hq_tNPWASM?si=qn8dXmRDV2w_XrqU
