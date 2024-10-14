@@ -6,7 +6,7 @@ console.log(namee);
 interface User {
     name: string;
     age: number;
-    roll:unknown
+    roll:unknown;
 }
 
 const user: User = {
@@ -49,7 +49,7 @@ class FbUser {
 const aryan = new FbUser("aryan sanjay tapre",12356,"taoer@gmail.com",new Date(Date.now()));
 
 type windowStates = "open" | "close" | "restore down" | "minimized";
-const winStat: windowStates = "open" ;
+const winStat: windowStates = "restore down" ;
 console.log(winStat);
 
 type rollno = Array<number> | Array<string>;
@@ -62,7 +62,6 @@ interface Animal {
     name:string;
 }
 
-
 interface Rabbit extends Animal {
     leg:number;
 }
@@ -73,6 +72,6 @@ const rabbit:Rabbit = {
 }
 console.log("rabbit is here:",rabbit);
 
-type lex = "open";
+type lex = "open" | "close";
 
 export {}

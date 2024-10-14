@@ -9,7 +9,7 @@ const res : number = addTwoNumbers(15);
 console.log(res);
 
 const connectDB = async () => {
-    // @ts-ignore
+    //@ts-ignore
     return new Promise((resolve:any, reject:any) => {
         resolve("hello from promise");
     })
@@ -44,9 +44,6 @@ function  compute(prefix:number[]):any {
 }
 
 
-
-
-
 class User {
     private name:string;
     private email:string;
@@ -56,7 +53,7 @@ class User {
         this.email = email;
     }
 
-    public get getName():string {
+    public getName():string {
         return this.name;
     } 
 }

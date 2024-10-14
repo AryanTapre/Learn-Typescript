@@ -10,7 +10,6 @@ const withComplicatedTask = <T,V extends Task[]>(target: undefined, context: Cla
                 name:"PRATA SPOJ",
                 level: "hard"
             })
-        
             return args;
         }
 }

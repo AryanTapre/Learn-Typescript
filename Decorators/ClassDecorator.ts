@@ -1,4 +1,3 @@
-
 function PrintDecorator(target:Function, context: ClassDecoratorContext) {
     console.log("target : ",target);
     console.log("Context:",context);
@@ -97,4 +96,4 @@ console.log(`taskID is : ${rocket.getTaskID()}`);
 //@ts-ignore
 console.log(rocket.getFuelCapacity());
 
-export {}
+export {};
