@@ -26,6 +26,8 @@ console.log(readOnlyPerson.name);
 console.log(readOnlyPerson.age);
 
 
+
+
 // function updateUser(user:ReadonlyPerson,name:string,age:number){
 //     user.name = name; // can't update due to readOnly property
 //      // can't update due to readOnly property
@@ -43,8 +45,19 @@ const aryan:UserSign = {
     name:"aryan",
     age:21,
     status:false,
-    10:"go"
+    10:"go",
 }
+
+interface Student {
+    [props:string] : string | number;
+}
+
+const tapre: Student = {
+    name:"aryan",
+    rollno:103
+}
+
+
 
 
 // TODO: tuples..
@@ -52,6 +65,7 @@ type rollPair = [number,string];
 
 const dataX:rollPair = [210160107518,"Aryan Sanjay Tapre"];
 
+console.log(dataX);
 
 
 function doSomething<T>(one:T,two:T) : void {

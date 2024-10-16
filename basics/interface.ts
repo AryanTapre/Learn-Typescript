@@ -20,6 +20,4 @@ console.log(p1.y);
 
 
 
-
-
 export{}
