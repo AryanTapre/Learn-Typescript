@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -46,7 +46,7 @@ var res = addTwoNumbers(15);
 console.log(res);
 var connectDB = function () { return __awaiter(_this, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        // @ts-ignore
+        //@ts-ignore
         return [2 /*return*/, new Promise(function (resolve, reject) {
                 resolve("hello from promise");
             })];
@@ -71,13 +71,9 @@ var User = /** @class */ (function () {
         this.name = name;
         this.email = email;
     }
-    Object.defineProperty(User.prototype, "getName", {
-        get: function () {
-            return this.name;
-        },
-        enumerable: false,
-        configurable: true
-    });
+    User.prototype.getName = function () {
+        return this.name;
+    };
     return User;
 }());
 var callMe = function (name) {
@@ -108,3 +104,10 @@ function firstElement(str) {
     return str[0];
 }
 console.log(typeof firstElement([1, 2, 3]));
+//TODO: define a generic function that deletes any element present in any type of Array
+//@ts-ignore
+var deleteElement = function (input, position, deleteCount) {
+    return input.splice(position, deleteCount);
+};
+var input = ["a", "b", "c", "d", "e"];
+console.log(deleteElement(input, 0, 1));

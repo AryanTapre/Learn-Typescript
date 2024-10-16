@@ -41,3 +41,9 @@ console.log("result will be:",result);
 function greet(): void {
     console.log("hello ,Aryan");
 }
+
+
+console.log(typeof null);
+
+
+export {}

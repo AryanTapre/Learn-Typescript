@@ -15,12 +15,10 @@ const connectDB = async () => {
     })
 }
 
-
-
 // call signatures
 interface Info {
     getName():string;
-    greet:string
+    greet:string;
 }
 
 const Car:Info = {
@@ -39,8 +37,6 @@ function  compute(prefix:number[]):any {
         console.log("inside map function..");
         return response;
     });
-
-    
 }
 
 
@@ -67,7 +63,9 @@ class User {
 
 type useMe = (name:string) => string;
 
-const callMe:useMe = (name:string) => {
+
+
+const callMe:useMe = (name:string) :string => {
     return name;
 }
 console.log(callMe("aryan"));
@@ -81,7 +79,6 @@ interface Vehicle  {
 function info(d:Vehicle) {
     console.log("description is :",d.description);
     console.log("insurane:",d.isInsurance());
-        
 }
 
 const d:Vehicle = {
@@ -116,4 +113,13 @@ function firstElement<type>(str:type[]) : type {
 console.log( typeof firstElement([1,2,3]));
 
 
+//TODO: define a generic function that deletes any element present in any type of Array
 
+//@ts-ignore
+const deleteElement = <type extends splice>(input: type[], position:number, deleteCount:number) : type[] | undefined =>  {
+    return input.splice(position,deleteCount);
+}
+
+const input:string[] = ["a","b","c","d","e"];
+
+console.log(deleteElement(input,0,1));

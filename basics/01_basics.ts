@@ -17,6 +17,8 @@ const user: User = {
 console.log(user);
 
 
+
+
 //@ts-ignore
 const getUserData = (data:unknown):never => {
     console.log(typeof data);
@@ -49,13 +51,12 @@ class FbUser {
 const aryan = new FbUser("aryan sanjay tapre",12356,"taoer@gmail.com",new Date(Date.now()));
 
 type windowStates = "open" | "close" | "restore down" | "minimized";
-const winStat: windowStates = "restore down" ;
+const winStat: windowStates = "restore down";
 console.log(winStat);
 
 type rollno = Array<number> | Array<string>;
 const data : rollno = [12,12,21];
 console.log(data);
-
 
 // checking interface and type for shaping the object!.
 interface Animal {
@@ -73,5 +74,12 @@ const rabbit:Rabbit = {
 console.log("rabbit is here:",rabbit);
 
 type lex = "open" | "close";
+
+enum Direction {
+    left = "left",
+    right ="right"
+}
+
+
 
 export {}
