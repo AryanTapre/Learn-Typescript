@@ -16,6 +16,7 @@ interface GenericIdentity {
 }
 
 let myIdentityTwo : GenericIdentity = identity;
+myIdentityTwo("aryan");
 
 
 // TODO:  making interface generic
@@ -24,6 +25,26 @@ interface GenericIdentityFn<type> {
 }
 
 let myIdentityThree : GenericIdentityFn<number>  = identity;
+
+
+
+// function printAnyThing<Type>(data:Type):Type  {
+//     return data;
+// }
+// printAnyThing(123);
+
+// const printAnyThing = <Type>(data:Type):Type => {
+//     return data;
+// }
+
+type PrintAnyThing = <Type>(data:Type) => Type;
+const printAnyThing:PrintAnyThing = (data) => {
+    return data;
+}
+
+console.log(printAnyThing(123));
+
+
 
 //.................................Generic Classes...................................
 

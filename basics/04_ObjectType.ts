@@ -58,8 +58,6 @@ const tapre: Student = {
 }
 
 
-
-
 // TODO: tuples..
 type rollPair = [number,string];
 
@@ -74,3 +72,5 @@ function doSomething<T>(one:T,two:T) : void {
 }
 
 doSomething<string|number>("aryan",12);
+
+
