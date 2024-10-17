@@ -64,6 +64,16 @@ var Aryan = /** @class */ (function (_super) {
 var getInstance = function (instance) {
     return new instance();
 };
-var aryan2 = getInstance(Aryan);
-aryan2.height = 6;
-console.log(aryan2.height);
+//@ts-ignore
+var jack = {
+    legs: 4,
+    ears: 2,
+    colour: "white-brown"
+};
+var props = "colour";
+console.log(jack[props]);
+//@ts-ignore
+var getvalue = function (obj, props) {
+    return obj[props];
+};
+console.log(getvalue(jack, "ears"));

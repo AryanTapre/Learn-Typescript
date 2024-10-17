@@ -1,10 +1,14 @@
 //TODO: --strictPropertyInitialization
 class Point {
-    x!:number;
+    x!:number; // if you intend to initialize data member by some one else not through the class constructor!.
     constructor(){
         this.x = 0;
     }
 }
+
+const point = new Point();
+console.log(point);
+
 
 
 //TODO: readonly
@@ -15,7 +19,6 @@ class Greater {
     constructor() {
         this.name = "change";
         this.name = "change2";
-
     }
 
     // update(){
@@ -43,7 +46,7 @@ let d : Derived = new Derived();
 let y:string = "global";
 class X {
      y:string = "hello";
-     
+
      getY() {
         console.log(this.y); // access y as X.y
         console.log(y);// access global y
@@ -94,6 +97,7 @@ interface CarStructure {
     setMode():boolean
 }
 
+//@ts-ignore
 class Xuv700 implements CarStructure {
     name:string;
     brand:string;
@@ -112,6 +116,13 @@ class Xuv700 implements CarStructure {
     }
 }
 
+
+const xuv700:Xuv700 = new Xuv700("xuv700","mahindra",2800000,"diesel");
+console.log(xuv700);
+
+
+
+
 interface A {
     x:number;
     y?:number;
@@ -128,9 +139,8 @@ class Animal {
     name:string = "hello";
     constructor() {
         console.log("parent constructor called");
-        
     }
-   
+    
     bark():void {
         console.log("animal barking....");
     }
@@ -140,7 +150,6 @@ class Dog extends Animal {
     name: string;
     constructor(name:string) {
         console.log("child constructor called");
-        
         super();
         this.name = name;
     }
@@ -152,6 +161,9 @@ class Dog extends Animal {
 
 const dog = new Dog("kalu");
 dog.bark();
+
+const a:Animal = new Dog("jack");
+a.bark();
 
 
 export {}

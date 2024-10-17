@@ -24,7 +24,6 @@ function getvalues<type extends object>(obj: type, key: keyof type) : type[keyof
     return obj[key];   
 }
 
-
 console.log(getvalues(userHero,"name"));
 
-
+export {}

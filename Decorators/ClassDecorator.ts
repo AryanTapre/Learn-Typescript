@@ -28,6 +28,7 @@ const withEmployeeDate = <T extends {new(...args:any[]): {}}>(BaseClass:T,contex
     }
 }
 
+
 //@PrintDecorator
 //@ts-ignore
 @withEmployeeDateOnPrototype

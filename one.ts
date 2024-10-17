@@ -1,3 +1,5 @@
+
+
 // Generic regular / arrow functions.
 
 function greetings<T>(val:T): void {
@@ -65,8 +67,29 @@ const getInstance = <Type extends Person>(instance: {new ():Type}) => {
     return new instance()
 }
 
-const aryan2:Aryan = getInstance(Aryan);
-aryan2.height = 6;
-console.log(aryan2.height);
+// const aryan2:Aryan = getInstance(Aryan);
+// aryan2.height = 6;
+//console.log(aryan2.height);
 
+interface Dog {
+    legs:number;
+    ears:number;
+    colour:string;
+}
 
+//@ts-ignore
+const jack:Dog = {
+    legs:4,
+    ears:2,
+    colour:"white-brown"
+}
+
+const props: keyof Dog = "colour"
+console.log(jack[props]);
+
+//@ts-ignore
+const getvalue = <T extends object>(obj:T, props: keyof T) : T[typeof T] => {
+    return obj[props];
+}
+
+console.log(getvalue(jack,"ears"));

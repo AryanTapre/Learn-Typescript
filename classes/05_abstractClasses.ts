@@ -6,13 +6,21 @@
  */
 
 abstract class Animal {
+    
+    constructor() {
+        console.log("abstract class Aniaml invoked");        
+    }
+
     abstract walk() : void;
     abstract eat() : void;
 }
 
 class Bird extends Animal {
-     constructor() {
+    //@ts-ignore
+    const birdName:string = "Angle";
+    constructor() {
         super();
+        console.log("child class Bird invoked");
     }
 
     eat(): void {
@@ -32,6 +40,9 @@ class BirdFactory {
 }
 
 
-const bird1 = BirdFactory.createBird();
-bird1.eat();
-bird1.walk();
+const b:Animal = new Bird();
+b.walk();
+
+// const bird1 = BirdFactory.createBird();
+// bird1.eat();
+// bird1.walk();

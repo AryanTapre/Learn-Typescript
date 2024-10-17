@@ -12,16 +12,16 @@ class Base {
 }
 
 class Derived extends Base {
-   protected rollno = 21;
+    protected rollno = 21;
 
     constructor(value:number) {
         super();
         this.rollno = value;
     }
 
-   public getRollNo() : number {
-    return this.rollno;
-   }
+    public getRollNo() : number {
+        return this.rollno;
+    }
 }
 
 const base : Base = new Base();

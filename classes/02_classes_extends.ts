@@ -1,14 +1,23 @@
 //FIXME: extends clause
 class Animal {
+    constructor() {
+        console.log("base class constructor called");
+        
+    }
     eat() {
         console.log("Animal is eating!.");
     }
 }
 
 class Dog extends Animal {
-   walk() {
+    constructor() {
+        super();
+        console.log("derived class constructor called");
+    }
+
+    walk() {
     console.log("dog is walking..");
-   }
+    }
 }
 
 const dog: Dog = new Dog();
