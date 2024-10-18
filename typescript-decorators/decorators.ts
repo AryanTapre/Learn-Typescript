@@ -13,6 +13,11 @@ const doSomething = (target:typeof  Example, context:ClassDecoratorContext): typ
     }
 
 }
+
+//TODO: add specific task here!.
+function doSomethingAnother () {
+    console.log("do-someting")
+}
 @doSomething
 class Example {
     public date:number;
@@ -32,7 +37,5 @@ const example:Example = new Example();
 console.log(example.name);
 //@ts-ignore
 console.log(example.rollno);
-
 console.log(example.date);
-
 example.getDetails();
