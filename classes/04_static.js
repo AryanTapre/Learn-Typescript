@@ -1,19 +1,15 @@
 "use strict";
-exports.__esModule = true;
-var Foo = /** @class */ (function () {
-    function Foo() {
-    }
-    Foo.updateGood = function (update) {
+Object.defineProperty(exports, "__esModule", { value: true });
+class Foo {
+    static updateGood(update) {
         Foo.good = update;
-    };
-    return Foo;
-}());
-var Gen = /** @class */ (function () {
-    function Gen(data) {
+    }
+}
+class Gen {
+    constructor(data) {
         this.data = data;
     }
-    return Gen;
-}());
-var gen = new Gen("hello");
+}
+const gen = new Gen("hello");
 console.log(Foo.updateGood("hello"));
 console.log(Foo.good);

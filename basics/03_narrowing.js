@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var isFish = function (pet) {
+const isFish = (pet) => {
     return pet.swim != undefined;
 };
-
 function getFood(pet) {
     if (isFish(pet)) {
         console.log("Fish Food!.");
@@ -14,21 +13,17 @@ function getFood(pet) {
         console.log("bird Food!.");
     }
 }
-
-var data = {
+const data = {
     swim: function () {
         console.log("hello from fish!.");
     }
 };
-
 getFood(data);
 function consoleError(errMsg) {
     throw new Error(errMsg);
 }
-
-var result = greet();
+const result = greet();
 console.log("result will be:", result);
-
 function greet() {
     console.log("hello ,Aryan");
 }

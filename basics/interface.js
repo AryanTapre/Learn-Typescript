@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class Point {
     constructor(x, y) {
         this.x = x;
@@ -8,4 +10,3 @@ const p1 = new Point(1, 2);
 console.log(typeof p1);
 console.log(p1.x);
 console.log(p1.y);
-export {};

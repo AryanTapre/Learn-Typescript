@@ -1,26 +1,27 @@
+"use strict";
 //TODO: readOnly properties
-var writiabelPerson = {
+let writiabelPerson = {
     name: "aryan tapre",
     age: 21,
 };
-var readOnlyPerson = writiabelPerson;
+let readOnlyPerson = writiabelPerson;
 readOnlyPerson = {
     name: "hello",
     age: 23,
 };
 console.log(readOnlyPerson.name);
 console.log(readOnlyPerson.age);
-var aryan = {
+const aryan = {
     name: "aryan",
     age: 21,
     status: false,
     10: "go",
 };
-var tapre = {
+const tapre = {
     name: "aryan",
     rollno: 103
 };
-var dataX = [210160107518, "Aryan Sanjay Tapre"];
+const dataX = [210160107518, "Aryan Sanjay Tapre"];
 console.log(dataX);
 function doSomething(one, two) {
     console.log(one);

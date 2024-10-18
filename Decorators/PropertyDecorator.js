@@ -1,40 +1,69 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-exports.__esModule = true;
-// const withComplicatedTask = <T,V extends Task[]>(target: undefined, context: ClassFieldDecoratorContext<T,V>) => {      
-//         return function(args: V) {
-//             args.push({
-//                 name:"PRATA SPOJ",
-//                 level: "hard"
-//             })
-//             return args;
-//         }
-// }
-//FIXME: OLDER SYNTAX:
-var withComplicatedTask = function (target, propertyKey) {
-    var tasks = target[propertyKey] || [];
-    console.log(tasks);
-    tasks.push({
-        name: "PRATA SPOJ",
-        level: "hard"
-    });
-};
-var Manager = /** @class */ (function () {
-    function Manager() {
-        //@ts-ignore
-        this.tasks = [];
+var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, decorators, contextIn, initializers, extraInitializers) {
+    function accept(f) { if (f !== void 0 && typeof f !== "function") throw new TypeError("Function expected"); return f; }
+    var kind = contextIn.kind, key = kind === "getter" ? "get" : kind === "setter" ? "set" : "value";
+    var target = !descriptorIn && ctor ? contextIn["static"] ? ctor : ctor.prototype : null;
+    var descriptor = descriptorIn || (target ? Object.getOwnPropertyDescriptor(target, contextIn.name) : {});
+    var _, done = false;
+    for (var i = decorators.length - 1; i >= 0; i--) {
+        var context = {};
+        for (var p in contextIn) context[p] = p === "access" ? {} : contextIn[p];
+        for (var p in contextIn.access) context.access[p] = contextIn.access[p];
+        context.addInitializer = function (f) { if (done) throw new TypeError("Cannot add initializers after decoration has completed"); extraInitializers.push(accept(f || null)); };
+        var result = (0, decorators[i])(kind === "accessor" ? { get: descriptor.get, set: descriptor.set } : descriptor[key], context);
+        if (kind === "accessor") {
+            if (result === void 0) continue;
+            if (result === null || typeof result !== "object") throw new TypeError("Object expected");
+            if (_ = accept(result.get)) descriptor.get = _;
+            if (_ = accept(result.set)) descriptor.set = _;
+            if (_ = accept(result.init)) initializers.unshift(_);
+        }
+        else if (_ = accept(result)) {
+            if (kind === "field") initializers.unshift(_);
+            else descriptor[key] = _;
+        }
     }
-    __decorate([
-        withComplicatedTask
-    ], Manager.prototype, "tasks");
-    return Manager;
-}());
-var manager = new Manager();
+    if (target) Object.defineProperty(target, contextIn.name, descriptor);
+    done = true;
+};
+var __runInitializers = (this && this.__runInitializers) || function (thisArg, initializers, value) {
+    var useValue = arguments.length > 2;
+    for (var i = 0; i < initializers.length; i++) {
+        value = useValue ? initializers[i].call(thisArg, value) : initializers[i].call(thisArg);
+    }
+    return useValue ? value : void 0;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const withComplicatedTask = (target, context) => {
+    return function (args) {
+        args.push({
+            name: "PRATA SPOJ",
+            level: "hard"
+        });
+        return args;
+    };
+};
+let Manager = (() => {
+    var _a;
+    let _tasks_decorators;
+    let _tasks_initializers = [];
+    let _tasks_extraInitializers = [];
+    return _a = class Manager {
+            constructor() {
+                //@ts-ignore
+                this.tasks = __runInitializers(this, _tasks_initializers, []);
+                __runInitializers(this, _tasks_extraInitializers);
+            }
+        },
+        (() => {
+            const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+            _tasks_decorators = [withComplicatedTask];
+            __esDecorate(null, null, _tasks_decorators, { kind: "field", name: "tasks", static: false, private: false, access: { has: obj => "tasks" in obj, get: obj => obj.tasks, set: (obj, value) => { obj.tasks = value; } }, metadata: _metadata }, _tasks_initializers, _tasks_extraInitializers);
+            if (_metadata) Object.defineProperty(_a, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
+        })(),
+        _a;
+})();
+const manager = new Manager();
 console.log(manager);
 //-----------------Another example......................
 //FIXME: newer Syntax not working!.
@@ -56,35 +85,47 @@ console.log(manager);
 //         }
 //     }
 // }
-var PasswordValidatorLength = function (limit) {
+const PasswordValidatorLength = (limit) => {
     //FIXME: older syntax of property decorator1.
     return function (target, propertyKey) {
-        var value;
+        let value;
         Object.defineProperty(target, propertyKey, {
-            get: function () {
+            get() {
                 return value;
             },
-            set: function (newVal) {
+            set(newVal) {
                 if (newVal.length < limit) {
                     console.error("password must be atleast of 8 characters!.");
                 }
                 else {
                     value = newVal;
                 }
-            }
+            },
         });
     };
 };
-var User = /** @class */ (function () {
-    function User(username, password) {
-        this.username = username;
-        this.password = password;
-    }
-    __decorate([
-        PasswordValidatorLength(8)
-    ], User.prototype, "password");
-    return User;
-}());
-var user = new User("_aryanTapre", "12345678");
+let User = (() => {
+    var _a;
+    let _password_decorators;
+    let _password_initializers = [];
+    let _password_extraInitializers = [];
+    return _a = class User {
+            constructor(username, password) {
+                //@ts-ignore
+                this.password = __runInitializers(this, _password_initializers, void 0);
+                __runInitializers(this, _password_extraInitializers);
+                this.username = username;
+                this.password = password;
+            }
+        },
+        (() => {
+            const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+            _password_decorators = [PasswordValidatorLength(8)];
+            __esDecorate(null, null, _password_decorators, { kind: "field", name: "password", static: false, private: false, access: { has: obj => "password" in obj, get: obj => obj.password, set: (obj, value) => { obj.password = value; } }, metadata: _metadata }, _password_initializers, _password_extraInitializers);
+            if (_metadata) Object.defineProperty(_a, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
+        })(),
+        _a;
+})();
+const user = new User("_aryanTapre", "12345678");
 //@ts-ignore
 console.log(user.password);

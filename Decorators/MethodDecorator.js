@@ -1,20 +1,5 @@
 "use strict";
 // TODO: Understanding method Decorator in detail!.
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __runInitializers = (this && this.__runInitializers) || function (thisArg, initializers, value) {
     var useValue = arguments.length > 2;
     for (var i = 0; i < initializers.length; i++) {
@@ -55,36 +40,35 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 //@ts-ignore
-var Product = function () {
-    var _classDecorators = [AddFields];
-    var _classDescriptor;
-    var _classExtraInitializers = [];
-    var _classThis;
-    var _instanceExtraInitializers = [];
-    var _addProduct_decorators;
-    var Product = _classThis = /** @class */ (function () {
-        function Product_1() {
+let Product = (() => {
+    let _classDecorators = [AddFields];
+    let _classDescriptor;
+    let _classExtraInitializers = [];
+    let _classThis;
+    let _instanceExtraInitializers = [];
+    let _addProduct_decorators;
+    var Product = _classThis = class {
+        constructor() {
             this.products = (__runInitializers(this, _instanceExtraInitializers), []);
         }
         //@ts-ignore
-        Product_1.prototype.addProduct = function (val) {
+        addProduct(val) {
             this.products.push(val);
-        };
-        return Product_1;
-    }());
+        }
+    };
     __setFunctionName(_classThis, "Product");
-    (function () {
-        var _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+    (() => {
+        const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
         _addProduct_decorators = [Role("admin")];
-        __esDecorate(_classThis, null, _addProduct_decorators, { kind: "method", name: "addProduct", static: false, private: false, access: { has: function (obj) { return "addProduct" in obj; }, get: function (obj) { return obj.addProduct; } }, metadata: _metadata }, null, _instanceExtraInitializers);
+        __esDecorate(_classThis, null, _addProduct_decorators, { kind: "method", name: "addProduct", static: false, private: false, access: { has: obj => "addProduct" in obj, get: obj => obj.addProduct }, metadata: _metadata }, null, _instanceExtraInitializers);
         __esDecorate(null, _classDescriptor = { value: _classThis }, _classDecorators, { kind: "class", name: _classThis.name, metadata: _metadata }, null, _classExtraInitializers);
         Product = _classThis = _classDescriptor.value;
         if (_metadata) Object.defineProperty(_classThis, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
         __runInitializers(_classThis, _classExtraInitializers);
     })();
     return Product = _classThis;
-}();
-var product = new Product();
+})();
+const product = new Product();
 console.log(product);
 product.addProduct({
     name: "hp victus",
@@ -105,14 +89,11 @@ function Role(role) {
     };
 }
 function AddFields(target, context) {
-    return /** @class */ (function (_super) {
-        __extends(class_1, _super);
-        function class_1() {
-            var _this = _super.call(this) || this;
-            _this.productName = "product";
-            _this.productPrice = "123";
-            return _this;
+    return class extends target {
+        constructor() {
+            super();
+            this.productName = "product";
+            this.productPrice = "123";
         }
-        return class_1;
-    }(target));
+    };
 }
