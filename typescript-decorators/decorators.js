@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -51,12 +52,17 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var doSomething = function (target, context) {
     if (context.kind == "class") {
         return /** @class */ (function (_super) {
             __extends(class_1, _super);
             function class_1() {
-                var _this = _super.call(this) || this;
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                var _this = _super.call(this, args) || this;
                 _this.name = "example";
                 _this.rollno = 123;
                 _this.name = "aryan-tapre";
@@ -67,19 +73,24 @@ var doSomething = function (target, context) {
         }(target));
     }
 };
+//TODO: add specific task here!.
+function doSomethingAnother() {
+    console.log("do-someting");
+}
 var Example = function () {
     var _classDecorators = [doSomething];
     var _classDescriptor;
     var _classExtraInitializers = [];
     var _classThis;
     var Example = _classThis = /** @class */ (function () {
-        function Example_1() {
+        function Example_1(age) {
             this.name = "demo";
             this.date = Date.now();
+            this.age = age;
         }
         Example_1.prototype.getDetails = function () {
             //@ts-ignore
-            console.log(this.name + " " + this.rollno + " " + this.date);
+            console.log(this.name + " " + this.rollno + " " + this.date + " " + this.age);
         };
         return Example_1;
     }());
@@ -93,10 +104,54 @@ var Example = function () {
     })();
     return Example = _classThis;
 }();
-var example = new Example();
+var example = new Example(22);
 //@ts-ignore
 console.log(example.name);
 //@ts-ignore
 console.log(example.rollno);
 console.log(example.date);
 example.getDetails();
+// TODO: method decorator
+// TODO: Requirements: create a class named 'RTO' that issues driving license according to checking of whether candidate has (Learners's License -< passes the DL test) ? log: issuing you a DL : return an error
+function issueDL(target, context) {
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var instance = this;
+        var applicationNo = args[0];
+        //@ts-ignore
+        if (!((instance === null || instance === void 0 ? void 0 : instance.isDLTestPass) && (instance === null || instance === void 0 ? void 0 : instance.isLCPresent))) {
+            console.error("Sorry RTO can't issue you a Driving License...");
+        }
+        else {
+            return target.apply(instance, args);
+        }
+    };
+}
+var RTO = function () {
+    var _a;
+    var _instanceExtraInitializers = [];
+    var _issueDL_decorators;
+    return _a = /** @class */ (function () {
+            function RTO(isDLTestPass, isLCPresent) {
+                this.isDLTestPass = __runInitializers(this, _instanceExtraInitializers);
+                this.isDLTestPass = isDLTestPass;
+                this.isLCPresent = isLCPresent;
+            }
+            RTO.prototype.issueDL = function (applicationNo) {
+                console.log("issued your DL, thank you for visiting");
+            };
+            return RTO;
+        }()),
+        (function () {
+            var _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+            _issueDL_decorators = [issueDL];
+            __esDecorate(_a, null, _issueDL_decorators, { kind: "method", name: "issueDL", static: false, private: false, access: { has: function (obj) { return "issueDL" in obj; }, get: function (obj) { return obj.issueDL; } }, metadata: _metadata }, null, _instanceExtraInitializers);
+            if (_metadata) Object.defineProperty(_a, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
+        })(),
+        _a;
+}();
+var rto = new RTO(false, true);
+rto.issueDL(1234);
