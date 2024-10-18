@@ -113,12 +113,15 @@ console.log(example.date);
 example.getDetails();
 // TODO: method decorator
 // TODO: Requirements: create a class named 'RTO' that issues driving license according to checking of whether candidate has (Learners's License -< passes the DL test) ? log: issuing you a DL : return an error
+//@ts-ignore
 function issueDL(target, context) {
     return function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
+        console.log("before changing anythng => ");
+        //@ts-ignore
         var instance = this;
         var applicationNo = args[0];
         //@ts-ignore
@@ -127,6 +130,7 @@ function issueDL(target, context) {
         }
         else {
             return target.apply(instance, args);
+            console.log("after changing anything");
         }
     };
 }
@@ -153,5 +157,48 @@ var RTO = function () {
         })(),
         _a;
 }();
-var rto = new RTO(false, true);
+var rto = new RTO(true, true);
 rto.issueDL(1234);
+function role(personRole) {
+    return function (target, context) {
+        return function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            var instance = this;
+            console.log("The instance is => " + JSON.stringify(instance));
+            if (personRole != "admin") {
+                console.error("You are not permissible to push products, as you are a " + personRole);
+            }
+            else {
+                console.log("You are admin, item pushed!.");
+                return target.apply(instance, args);
+            }
+        };
+    };
+}
+var Product = function () {
+    var _a;
+    var _instanceExtraInitializers = [];
+    var _addProducts_decorators;
+    return _a = /** @class */ (function () {
+            function Product() {
+                this.products = (__runInitializers(this, _instanceExtraInitializers), []);
+            }
+            Product.prototype.addProducts = function (items) {
+                this.products.push(items);
+                this.products.forEach(function (e) { return console.log(e); });
+            };
+            return Product;
+        }()),
+        (function () {
+            var _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+            _addProducts_decorators = [role("staff")];
+            __esDecorate(_a, null, _addProducts_decorators, { kind: "method", name: "addProducts", static: false, private: false, access: { has: function (obj) { return "addProducts" in obj; }, get: function (obj) { return obj.addProducts; } }, metadata: _metadata }, null, _instanceExtraInitializers);
+            if (_metadata) Object.defineProperty(_a, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
+        })(),
+        _a;
+}();
+var p = new Product();
+p.addProducts({ name: "laptop", price: 690000, brand: "HP" });

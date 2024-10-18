@@ -50,8 +50,12 @@ example.getDetails();
 // TODO: method decorator
 // TODO: Requirements: create a class named 'RTO' that issues driving license according to checking of whether candidate has (Learners's License -< passes the DL test) ? log: issuing you a DL : return an error
 
+//@ts-ignore
 function issueDL<Type extends {(...args:any[])}>(target:Function, context:ClassMethodDecoratorContext) {
+
     return function (...args:any) {
+        console.log("before changing anythng => ");
+        //@ts-ignore
         const instance = this as Type;
         const applicationNo = args[0];
 
@@ -60,7 +64,10 @@ function issueDL<Type extends {(...args:any[])}>(target:Function, context:ClassM
             console.error("Sorry RTO can't issue you a Driving License...");
         } else {
             return target.apply(instance, args);
+            console.log("after changing anything");
         }
+
+
     }
 }
 class RTO {
@@ -77,5 +84,43 @@ class RTO {
     }
 }
 
-const rto:RTO = new RTO(false, true);
+const rto:RTO = new RTO(true, true);
 rto.issueDL(1234);
+
+
+
+// another example
+interface product {
+    name:string;
+    brand:string;
+    price:number;
+}
+
+function role(personRole:string) {
+    return function <Type >(target:Function, context:ClassMethodDecoratorContext<Type>) {
+        return function (...args:any) {
+                const instance = this as Type;
+                console.log("The instance is => " + JSON.stringify(instance));
+                if(personRole != "admin") {
+                    console.error("You are not permissible to push products, as you are a "+personRole);
+                }else {
+                    console.log("You are admin, item pushed!.");
+                    return target.apply(instance, args);
+                }
+        }
+
+
+
+    }
+}
+class Product {
+    public  products:product[] = [];
+    @role("staff")
+    public addProducts(items:product) {
+        this.products.push(items);
+        this.products.forEach(e => console.log(e))
+    }
+}
+
+const p:Product = new Product();
+p.addProducts({name:"laptop",price:690000,brand:"HP"});
