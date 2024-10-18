@@ -166,6 +166,7 @@ function role(personRole) {
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
             }
+            //@ts-ignore
             var instance = this;
             console.log("The instance is => " + JSON.stringify(instance));
             if (personRole != "admin") {
@@ -202,3 +203,33 @@ var Product = function () {
 }();
 var p = new Product();
 p.addProducts({ name: "laptop", price: 690000, brand: "HP" });
+// TODO: Field decorators
+function addOne(target, context) {
+    return function (value) {
+        console.log("add one: " + value);
+        return value + 1;
+    };
+}
+var Demo = function () {
+    var _a;
+    var _data_decorators;
+    var _data_initializers = [];
+    var _data_extraInitializers = [];
+    return _a = /** @class */ (function () {
+            function Demo() {
+                //@ts-ignore  
+                this.data = __runInitializers(this, _data_initializers, 0);
+                __runInitializers(this, _data_extraInitializers);
+            }
+            return Demo;
+        }()),
+        (function () {
+            var _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+            _data_decorators = [addOne];
+            __esDecorate(null, null, _data_decorators, { kind: "field", name: "data", static: false, private: false, access: { has: function (obj) { return "data" in obj; }, get: function (obj) { return obj.data; }, set: function (obj, value) { obj.data = value; } }, metadata: _metadata }, _data_initializers, _data_extraInitializers);
+            if (_metadata) Object.defineProperty(_a, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
+        })(),
+        _a;
+}();
+var demo = new Demo();
+console.log(demo.data);

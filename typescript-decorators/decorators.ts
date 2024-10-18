@@ -67,7 +67,6 @@ function issueDL<Type extends {(...args:any[])}>(target:Function, context:ClassM
             console.log("after changing anything");
         }
 
-
     }
 }
 class RTO {
@@ -99,6 +98,7 @@ interface product {
 function role(personRole:string) {
     return function <Type >(target:Function, context:ClassMethodDecoratorContext<Type>) {
         return function (...args:any) {
+            //@ts-ignore
                 const instance = this as Type;
                 console.log("The instance is => " + JSON.stringify(instance));
                 if(personRole != "admin") {
@@ -108,9 +108,6 @@ function role(personRole:string) {
                     return target.apply(instance, args);
                 }
         }
-
-
-
     }
 }
 class Product {
@@ -124,3 +121,27 @@ class Product {
 
 const p:Product = new Product();
 p.addProducts({name:"laptop",price:690000,brand:"HP"});
+
+
+// TODO: Field decorators
+
+
+function addOne<T>(target:undefined, context:ClassFieldDecoratorContext<T,number>) {
+    return function (this:T, value:number) {
+        console.log("add one: "+value);
+        
+        return value + 1; 
+        
+    }
+}
+
+class Demo {
+    //@ts-ignore  
+    @addOne
+     data = 0;
+   
+
+}
+
+const demo:Demo = new Demo();
+console.log(demo.data);
