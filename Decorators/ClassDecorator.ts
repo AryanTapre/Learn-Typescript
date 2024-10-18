@@ -18,7 +18,7 @@ function withEmployeeDateOnPrototype(target:Function, context: ClassDecoratorCon
 const withEmployeeDate = <T extends {new(...args:any[]): {}}>(BaseClass:T,context:ClassDecoratorContext) => {
     return class extends BaseClass {
 
-                private dateOfEmployee: unknown;
+                private dateOfEmployee:unknown;
                 constructor(...args:any[]) {
                     super(...args);
                     this.dateOfEmployee = new Date().toISOString();
