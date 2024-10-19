@@ -4,8 +4,11 @@ function identity(data) {
     return data;
 }
 identity("aryan"); // explictly specifying the type
+
 identity("tapre"); // compiler automatically infer the type at compile type
+
 let myIdentity = identity;
+
 myIdentity("hello");
 let myIdentityTwo = identity;
 myIdentityTwo("aryan");
@@ -61,5 +64,6 @@ class Dog extends Animal {
 const createInstance = (instance) => {
     return new instance();
 };
+
 console.log(createInstance(Lion).keeper.hasMaks);
 console.log(createInstance(Dog).keeper.nameTag);

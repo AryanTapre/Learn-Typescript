@@ -2,3 +2,6 @@ https://blog.logrocket.com/practical-guide-typescript-decorators/
 
 
 https://youtu.be/1hq_tNPWASM?si=qn8dXmRDV2w_XrqU
+
+
+TypeScript version 5 :   https://medium.com/@hizacharylee/a-quick-guide-to-typescript-5-0-decorators-d06cabe09e8c

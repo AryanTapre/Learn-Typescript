@@ -1,6 +1,4 @@
 // TODO: class decorator
-import {log} from "node:util";
-import {FinishedOptions} from "node:stream";
 
 const doSomething = <Type extends {new(...args:any[]):{}}>(target:Type, context:ClassDecoratorContext)=> {
     if(context.kind == "class") {
@@ -63,8 +61,9 @@ function issueDL<Type extends {(...args:any[])}>(target:Function, context:ClassM
         if(!(instance?.isDLTestPass && instance?.isLCPresent)) {
             console.error("Sorry RTO can't issue you a Driving License...");
         } else {
-            return target.apply(instance, args);
+            const newMethod = target.apply(instance, args);
             console.log("after changing anything");
+            return newMethod;
         }
 
     }
@@ -129,19 +128,19 @@ p.addProducts({name:"laptop",price:690000,brand:"HP"});
 function addOne<T>(target:undefined, context:ClassFieldDecoratorContext<T,number>) {
     return function (this:T, value:number) {
         console.log("add one: "+value);
-        
         return value + 1; 
-        
     }
 }
 
 class Demo {
     //@ts-ignore  
     @addOne
-     data = 0;
-   
-
+    data = 0;
 }
 
 const demo:Demo = new Demo();
 console.log(demo.data);
+
+
+
+
