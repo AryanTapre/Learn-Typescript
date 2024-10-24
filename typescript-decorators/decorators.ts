@@ -65,7 +65,6 @@ function issueDL<Type extends {(...args:any[])}>(target:Function, context:ClassM
             console.log("after changing anything");
             return newMethod;
         }
-
     }
 }
 class RTO {
@@ -95,7 +94,7 @@ interface product {
 }
 
 function role(personRole:string) {
-    return function <Type >(target:Function, context:ClassMethodDecoratorContext<Type>) {
+    return function <Type>(target:Function, context:ClassMethodDecoratorContext<Type>) {
         return function (...args:any) {
             //@ts-ignore
                 const instance = this as Type;
@@ -109,8 +108,10 @@ function role(personRole:string) {
         }
     }
 }
+
 class Product {
     public  products:product[] = [];
+
     @role("staff")
     public addProducts(items:product) {
         this.products.push(items);
@@ -123,7 +124,6 @@ p.addProducts({name:"laptop",price:690000,brand:"HP"});
 
 
 // TODO: Field decorators
-
 
 function addOne<T>(target:undefined, context:ClassFieldDecoratorContext<T,number>) {
     return function (this:T, value:number) {
@@ -141,6 +141,9 @@ class Demo {
 const demo:Demo = new Demo();
 console.log(demo.data);
 
-
-
-
+function addTwo<Type>(target: undefined, context: ClassFieldDecoratorContext<Type, number>) {
+    return function(this:Type, value:number) {
+        console.log("add two: "+value);
+        return value + 2;
+    }
+}
