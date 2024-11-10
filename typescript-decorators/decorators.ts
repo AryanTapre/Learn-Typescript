@@ -1,3 +1,5 @@
+// hello here
+
 // TODO: class decorator
 
 const doSomething = <Type extends {new(...args:any[]):{}}>(target:Type, context:ClassDecoratorContext)=> {
