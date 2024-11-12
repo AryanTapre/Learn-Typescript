@@ -10,6 +10,7 @@ const greetings2 = <T>(val:T):void => {
     console.log("hello, "+val);
 }
 
+
 interface Greetings {
     <T>(val:T):void,
 }
