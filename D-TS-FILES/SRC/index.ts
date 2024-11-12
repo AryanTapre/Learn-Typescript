@@ -9,3 +9,4 @@ const input:T.MyCodeInput = {
 }
 
 console.log(input.greet("Aryan"));
+

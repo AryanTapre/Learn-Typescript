@@ -3,3 +3,7 @@ export declare type MyCodeInput = {
     greet(name:string):string
 }
 
+export declare interface Hello  {
+    name:string,
+    age:number
+}
